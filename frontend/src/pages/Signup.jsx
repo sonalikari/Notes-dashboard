@@ -36,8 +36,8 @@ const SignUp = () => {
         const data = await response.json();
         localStorage.setItem("token", data.token); // Store token in localStorage
         setSuccess(true);
-        alert("Signup successful! Redirecting to the dashboard...");
-        navigate("/home"); // Redirect to the home page
+        alert("Signup successful! Login to continue to dashboard...");
+        navigate("/"); // Redirect to the home page
       } else {
         const error = await response.json();
         setError(error.message || "Signup failed. Please try again.");
@@ -143,8 +143,8 @@ const SignUp = () => {
           </div>
 
           <button className="w-full flex items-center justify-center gap-2 py-2 bg-white border border-gray-300 rounded-md text-gray-600 hover:bg-gray-100">
-            <img src={google} alt="Google Icon" className="w-5 h-5" />
             Continue with Google
+            <img src={google} alt="Google Icon" className="w-5 h-5" />
           </button>
 
           <p className="text-sm text-gray-500 mt-6 text-center">

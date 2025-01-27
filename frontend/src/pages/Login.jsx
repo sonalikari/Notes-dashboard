@@ -24,13 +24,16 @@ const SignIn = () => {
     }
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       const data = await response.json();
 
@@ -47,6 +50,9 @@ const SignIn = () => {
     } finally {
       setLoading(false);
     }
+  };
+  const handleNavigate = () => {
+    navigate("/signup");
   };
 
   return (
@@ -85,7 +91,10 @@ const SignIn = () => {
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-left text-sm mb-1">
+              <label
+                htmlFor="password"
+                className="block text-left text-sm mb-1"
+              >
                 Password
               </label>
               <input
@@ -128,9 +137,12 @@ const SignIn = () => {
           {/* Footer */}
           <p className="text-sm text-gray-500 mt-6">
             Need an account?{" "}
-            <a href="/signup" className="text-blue-500 underline">
+            <span
+              className="text-blue-500 underline cursor-pointer"
+              onClick={handleNavigate}
+            >
               Create one
-            </a>
+            </span>
           </p>
         </div>
 
